@@ -2,9 +2,9 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>Postulación</title>
+        <title>empleados</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="" />
+        <meta name="description" content="sistema de reglas de programacion" />
         <meta name="author" content="Humberto Calleja Juarez" />
 
         <!-- ================== BEGIN core-css ================== -->
@@ -32,6 +32,9 @@
         <link rel="stylesheet" type="text/css" href="../assets/plugins/bs5-datatables/StateRestore-1.1.1/css/stateRestore.bootstrap5.min.css"/>
 
         <link href="../assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
+
+        <link rel="stylesheet" href="../assets/plugins/Select2/select2.min.css" />
+        <link rel="stylesheet" href="../assets/plugins/Select2/select2-bootstrap-5-theme.min.css" />
     </head>
     <body>
         <!-- BEGIN #app -->
@@ -113,7 +116,7 @@
             <div id="content" class="app-content">
                 <div style="text-align: center;">
                     <h1 class="page-header mb-3">
-                        SISTEMA DE CONTROL DE PAGOS
+                        SISTEMA DE CONTROL DE EMPLEADOS
                     </h1>                   
                 </div>
 
@@ -121,78 +124,56 @@
                     <!-- BEGIN card-body -->
                     <div class="card-body">                    
                         <div class="row g-3">
-                            <div class="col-md-1">
+                            <div class="col-md-2">
                                 <button type="button" class="btn btn-outline-purple" data-bs-toggle="modal" data-bs-target="#modal_New_Person">Nuevo Empleado</button>
-                            </div>
-                            <div class="col-md-1">
-                                <div class="form-floating">
-                                    <select class="form-select" id="filt_TpEmple_DataTable" aria-label="Estatus" >                         
-                                    </select>
-                                    <label for="floatingSelect">Tipo Empleado</label>
-                                </div>
-                            </div>
-                            <div class="col-md-1">
-                                <a href="#" class="card bg-gradient-cyan-blue border-0 text-decoration-none">
-                                    <div class="card-body d-flex align-items-center text-white">
-                                        <div class="flex-fill">
-                                            <div class="mb-1">Choferes</div>
-                                            <h5 id="p_Chofe"></h5>
-                                        </div>
-                                        <div class="opacity-5">
-                                            <i class="fa fa-car fa-2x"></i>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-1">
-                                <a href="#" class="card bg-gradient-red-pink border-0 text-decoration-none">
-                                    <div class="card-body d-flex align-items-center text-white">
-                                        <div class="flex-fill">
-                                            <div class="mb-1">Cargadores</div>
-                                            <h5 id="p_Carga"></h5>
-                                        </div>
-                                        <div class="opacity-5">
-                                            <i class="fa fa-archive fa-2x"></i>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-1">
-                                <a href="#" class="card bg-gradient-teal border-0 text-decoration-none">
-                                    <div class="card-body d-flex align-items-center text-white">
-                                        <div class="flex-fill">
-                                            <div class="mb-1">Auxiliares</div>
-                                            <h5 id="p_Aux"></h5>
-                                        </div>
-                                        <div class="opacity-5">
-                                            <i class="fa fa-person fa-2x"></i>
-                                        </div>
-                                    </div>
-                                </a>
                             </div>
                         </div>
                         <table id="tbl_Empleados" class="table table-sm table-striped nowrap" style="width:100%">
                             <thead>
                                 <tr> 
-                                    <th>No. Empleado</th>
-                                    <th>Nombre</th>
-                                    <th>Paterno</th>
-                                    <th>Materno</th>
-                                    <th>Tipo</th>
-                                    <th>Fecha Registro</th>
-                                    <th>op</th>
+                                    <th rowspan="2">info</th>
+                                    <th rowspan="2">No.<br>Empleado</th>
+                                    <th rowspan="2">Nombre</th>
+                                    <th rowspan="2">Centro</th>
+                                    <th rowspan="2">Puesto</th>
+                                    <th colspan="5" style="text-align: center">DATOS PERSONALES</th>
+                                    <th colspan="5" style="text-align: center">DATOS DOMICILIARIOS</th>
+
+                                </tr>
+                                <tr>                                    
+                                    <th>CURP</th>
+                                    <th>NSS</th> 
+                                    <th>RFC</th> 
+                                    <th>NO.<br>CUENTA BANCO</th>
+                                    <th>EMAIL</th>
+                                    <!-- DIV -->
+                                    <th>PAIS</th>
+                                    <th>ENTIDAD FEDERATIVA</th>
+                                    <th>MUNICIPIO</th>
+                                    <th>COLONIA</th>
+                                    <th>DOMICILIO</th>
                                 </tr>
                             </thead>
                             <tbody></tbody>
                             <tfoot>
                                 <tr>
+
+                                    <th>info</th>
                                     <th>No. Empleado</th>
                                     <th>Nombre</th>
-                                    <th>Paterno</th>
-                                    <th>Materno</th>
-                                    <th>Tipo</th>       
-                                    <th>Fecha Registro</th>
-                                    <th>op</th>
+                                    <th>Centro</th>
+                                    <th>Puesto</th>
+                                    <th>NSS</th>
+                                    <th>RFC</th>
+                                    <th>NO. CUENTA BANCO</th>
+                                    <th>EMAIL</th>
+                                    <!-- DIV -->
+                                    <th>PAIS</th>
+                                    <th>ENTIDAD FEDERATIVA</th>
+                                    <th>MUNICIPIO</th>
+                                    <th>COLONIA</th>
+                                    <th>DOMICILIO</th>
+
                                 </tr>
                             </tfoot>
                         </table>
@@ -242,15 +223,16 @@
 
         <!-- END #app -->
         <div class="modal fade" id="modal_New_Person">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="titleNewEmpleado">Nuevo Empleado</h5>
+                        <h5 class="modal-title" id="titleEmpleado">Nuevo Empleado</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body" >
-                        <form class="row g-3 needs-validation" novalidate id="frmNewPerson" name="frmNewPerson" >
-                            <div class="col-md-3">
+                        <form class="row g-2 needs-validation" novalidate id="frmNuevoEmple" name="frmNuevoEmple">
+                            <div class="fw-600 mb-0 text-muted">Datos Personales</div>
+                            <div class="col-md-2">
                                 <div class="form-floating">
                                     <input type="text" class="form-control" id="P_Nombre" name="P_Nombre" placeholder="Nombre del Empleado" required>
                                     <label for="P_Nombre">Nombre</label>
@@ -259,31 +241,237 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 <div class="form-floating">
                                     <input type="text" class="form-control" id="P_ApelP" name="P_ApelP" placeholder="Apellido Paterno" required>
-                                    <label for="P_ApelP">A. Paterno:</label>
+                                    <label for="P_ApelP">A. PATERNO:</label>
                                     <div class="invalid-feedback">
                                         Por favor ingrese el Apellido Paterno
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 <div class="form-floating">
                                     <input type="text" class="form-control" id="P_ApelM" name="P_ApelM" placeholder="Apellido Materno" required>
-                                    <label for="P_ApelM">A. Materno:</label>
+                                    <label for="P_ApelM">A. MATERNO:</label>
                                     <div class="invalid-feedback">
                                         Por favor ingrese el Apellido Materno
                                     </div>
                                 </div>
                             </div>
 
+                            <div class="col-md-2">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="P_fec_nac" name="P_fec_nac" placeholder="Apellido Materno" required>
+                                    <label for="P_fec_nac">FECHA NACIMIENTO</label>
+                                    <div class="invalid-feedback">
+                                        Por favor ingrese la fecha de nacimiento
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="form-control">
+                                    <select class="form-select" id="P_slctgenero" name="P_slctgenero" aria-label="P_slctgenero" ></select>                
+                                    <div class="invalid-feedback">
+                                        Por favor Seleccione su genero
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="form-floating">
+                                    <select class="form-select" id="P_slctNacio" name="P_slctNacio" aria-label="P_slctNacio" ></select>
+                                    <label for="P_slctNacio">NACIONALIDAD:</label>
+                                    <div class="invalid-feedback">
+                                        Por favor Seleccione su genero
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="col-md-3">
                                 <div class="form-floating">
-                                    <select class="form-select" id="P_slctRol" name="slctRol" aria-label="Rol" ></select>
-                                    <label for="P_slctRol">Rol:</label>
+                                    <input type="text" class="form-control" style="text-transform: uppercase;" id="P_CURP" name="P_CURP" placeholder="CURP" minlength="18" maxlength="18" required>
+                                    <label for="P_CURP">CURP:</label>
                                     <div class="invalid-feedback">
-                                        Por favor Seleccione un Rol
+                                        Por favor su CURP
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="P_NSS" name="P_NSS" placeholder="NSS" minlength="11" maxlength="11" required>
+                                    <label for="P_NSS">NSS:</label>
+                                    <div class="invalid-feedback">
+                                        Por favor su numero de seguro social
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="P_RFC" name="P_RFC" placeholder="RFC" minlength="3" maxlength="25" required>
+                                    <label for="P_RFC">RFC:</label>
+                                    <div class="invalid-feedback">
+                                        Por favor su RFC
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="P_TEL" name="P_TEL" placeholder="TEl" minlength="10" maxlength="10" required>
+                                    <label for="P_TEL">TEL:</label>
+                                    <div class="invalid-feedback">
+                                        Por favor su numero de telefono
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="P_TEL_acc" name="P_TEL_acc" placeholder="TEl" minlength="10" maxlength="10" required>
+                                    <label for="P_TEL_acc">TEL EMERGENCIA:</label>
+                                    <div class="invalid-feedback">
+                                        Por favor ingrece un numero de contacto en casa de accidente
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="P_cta_banc" name="P_cta_banc" placeholder="CUENTA DE BANCO" required>
+                                    <label for="P_cta_banc">CUENTA DE BANCO:</label>
+                                    <div class="invalid-feedback">
+                                        Por favor su numero de cuenta
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-floating">
+                                    <input type="email" class="form-control" id="P_email" name="P_email" placeholder="ejemplo@gmail.com" required>
+                                    <label for="P_email">EMAIL:</label>
+                                    <div class="invalid-feedback">
+                                        Por favor su correo electronico
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-floating">
+                                    <select class="form-select" id="P_slctSangre" name="P_slctSangre" aria-label="P_slctSangre" ></select>
+                                    <label for="P_slctSangre">TIPO SANGINEO:</label>
+                                    <div class="invalid-feedback">
+                                        Por favor Seleccione su tipo de sangre
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-floating">
+                                    <select class="form-select" id="P_slctNV_estudio" name="P_slctNV_estudio" aria-label="P_slctNV_estudio" required></select>
+                                    <label for="P_slctNV_estudio">NIVEL DE ESTUDIOS:</label>
+                                    <div class="invalid-feedback">
+                                        Por favor Seleccione su grado máximo de estudios
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="fw-600 mb-0 text-muted">Datos Domicilio</div>
+                            <div class="col-md-4">
+                                <div class="form-control">
+                                    <select class="form-select" id="P_slctPais" name="P_slctPais" aria-label="P_slctPais" required></select>                                  
+                                    <div class="invalid-feedback">
+                                        Por favor Seleccione su pais
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-control">
+                                    <select class="form-select" id="P_slctFedera" name="P_slctFedera" aria-label="P_slctFedera" required></select>                                    
+                                    <div class="invalid-feedback">
+                                        Por favor Seleccione su erntidad federativa
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-control">
+                                    <select class="form-select" id="P_slctMuni" name="P_slctMuni" aria-label="P_slctMuni" required></select>
+                                    <div class="invalid-feedback">
+                                        Por favor Seleccione su municipio
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-control">
+                                    <select class="form-select" id="P_slctColonia" name="P_slctColonia" aria-label="P_slctColonia" required></select>
+                                    <div class="invalid-feedback">
+                                        Por favor Seleccione la colonia
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="P_calle" name="P_calle" placeholder="..." required>
+                                    <label for="P_calle">CALLE:</label>
+                                    <div class="invalid-feedback">
+                                        Por favor ingrese su calle de su domicialio
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control" id="P_NoExt" name="P_NoExt" placeholder="..." required>
+                                    <label for="P_NoExt">No. Exterior:</label>
+                                    <div class="invalid-feedback">
+                                        Por favor ingrese el numero exterior 
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-2">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control" id="P_NoInt" name="P_NoInt" placeholder="..." required>
+                                    <label for="P_NoInt">No. Interiro:</label>
+                                    <div class="invalid-feedback">
+                                        Por favor ingrese el numero interior 
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="P_refere" name="P_refere" placeholder="..." required>
+                                    <label for="P_refere">REFERENCIA DEL DOMICILIO:</label>
+                                    <div class="invalid-feedback">
+                                        Por favor ingrese alguna referencia de su domicilio
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="fw-600 mb-0 text-muted">Datos Laborales</div>
+                            <div class="col-md-4">
+                                <div class="form-floating">
+                                    <select class="form-select" id="P_slctCentro" name="P_slctCentro" aria-label="P_slctCentro" required></select>
+                                    <label for="P_slctCentro">CENTRO:</label>
+                                    <div class="invalid-feedback">
+                                        Por favor seleccione el centro al que pertenece
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-floating">
+                                    <select class="form-select" id="P_slctPuesto" name="P_slctPuesto" aria-label="P_slctPuesto" required></select>
+                                    <label for="P_slctPuesto">PUESTO:</label>
+                                    <div class="invalid-feedback">
+                                        Por favor seleccione el puesto 
                                     </div>
                                 </div>
                             </div>
@@ -301,116 +489,17 @@
             </div>
         </div>
 
-        <!-- Modal Movimientos del empleado -->
 
-        <div class="modal fade" id="modal_Mov_Person">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="titleMovEmpleado">Movimientos del Empleado: </h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                    </div>
-                    <div class="modal-body" >
-                        <div class="row g-3">
-                            <div class="col-md-3">
-                                <button type="button" class="btn btn-outline-purple" id="btnNewMovEmpleado">Nuevo Movimiento</button>
-                            </div>
-                        </div>
-                        <table id="tbl_Mov_EmpleadosReg" class="table table-sm table-striped nowrap" style="width:100%">
-                            <thead>
-                                <tr> 
-                                    <th rowspan="2">Horas<br>Trabajadas</th>
-                                    <th rowspan="2">Mes</th>
-                                    <th rowspan="2">Entregas</th>
-                                    <th colspan="2">Pago Total por:</th>
-                                    <th rowspan="2">Vales</th>
-                                    <th rowspan="2">SubTotal</th>
-                                    <th rowspan="2">Deducciones</th>
-                                    <th rowspan="2">Total</th>
-                                    <th rowspan="2">op</th>
-                                </tr>
-                                <tr>                                    
-                                    <th>Entregas</th>
-                                    <th>Bonos</th>
-                                </tr>
-                            </thead>
-                            <tbody></tbody>
-                            <tfoot>
-                                <tr>
-                                    <th>Horas Trabajadas</th>
-                                    <th>Mes</th>
-                                    <th>Entregas</th>
-                                    <th>Entregas</th>
-                                    <th>Bonos</th>
-                                    <th>Vales</th>       
-                                    <th>SubTotal</th>
-                                    <th>Deducciones</th>
-                                    <th>Total</th>
-                                    <th>op</th>
-                                </tr>
-                            </tfoot>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <!-- Addmovimiento -->
-        <div class="modal fade" id="Modal_AddMov" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content bg-blue-100">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="TAddMov">Agrega Movimientos</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <form class="row g-3 needs-validation" novalidate  id="frmAddMov" name="frmAddMov">
-                        <div class="modal-body">
-                            <div class="row g-2">
-                                <div class="col-md">
-                                    <div class="form-floating">
-                                        <input class="form-control" id="Mes" name="mes" required>
-                                        <label for="Mes">Mes</label>
-                                        <div class="invalid-feedback">
-                                            Por favor seleccione un Mes
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md">
-                                    <div class="form-floating">
-                                        <input type="Number" class="form-control" id="catEntre" name="catEntre" placeholder="1" required>
-                                        <label for="catEntre">#Entregas</label>
-                                        <div class="invalid-feedback">
-                                            Por favor ingrese la cantidad de entregas
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md">
-                                    <div class="form-floating">
-                                        <input type="Number" class="form-control" id="catDay" name="catDay" placeholder="1" required>
-                                        <label for="catDay">#Días trabaja</label>
-                                        <div class="invalid-feedback">
-                                            Por favor ingrese la cantidad de días que trabajo
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <input type="number" class="form-control" name="op" id="opMNU" value="4" readonly hidden>
-                            <input type="text" class="form-control" name="key" id="keyEmpl" readonly hidden>
-                            <input type="text" class="form-control" name="keyUp" id="keyUp" readonly hidden>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
-                            <button type="submit" class="btn btn-primary">Guardar Movimiento</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+
 
         <!-- ================== BEGIN core-js ================== -->
         <script src="../assets/js/vendor.min.js"></script>
         <script src="../assets/js/app.min.js"></script>
         <!-- ================== END core-js ================== -->
+
+        <script src="../assets/plugins/Select2/select2.min.js"></script>
+        <script src="../../../js/captura/dm.js"></script>
 
         <script src="../assets/plugins/moment/min/moment.min.js"></script>
         <script src="../assets/plugins/moment/locale/es-mx.js"></script>
@@ -444,8 +533,9 @@
         <script src="../assets/plugins/toastr/toastr.min.js"></script>
         <script src="../assets/plugins/sweetalert2/sweetalert2.min.js"></script>
         <script src="../assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
-        <script src="../../../js/dm.js"></script>
-        <script src="../../../js/Capture.js"></script>
+
+        <script src="../../../js/captura/captura.js"></script>
+
 
     </body>
 </html>
